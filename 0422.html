@@ -1,0 +1,68 @@
+<html>
+<head>
+	<style>
+		#board {
+			width:600px;
+			height:600px;
+			border:3px solid gray;
+			position:relative;
+			background:url("pic/grass.jpg");
+		}
+		#avt {
+			width:48px;
+			height:72px;
+			background:url("pic/rpgmaker1.png");
+			animation:walk 1s steps(3) infinite;
+			position:absolute;
+			left:276px;
+			top:264px;
+		}
+		@keyframes walk {
+			0%{background-position-x:0px;}
+			100%{background-position-x:-153px;}
+		}
+	</style>
+	<script>
+		var avtY;
+		var pos={x:276,y:264};
+		var bgpos={x:0,y:0};
+		var keys={" ":0,"ArrowDown":1,"ArrowLeft":2,"ArrowRight":3,"ArrowUp":4};
+		var mydir=0;
+		var walk_tmr;
+		function get(id) {
+			return document.getElementById(id);
+		}
+		function walk(){
+			if(mydir==1) {
+				bgpos.y=(bgpos.y-1)%90;
+			} else if(mydir==2) {
+				bgpos.x=(bgpos.x+1)%128;
+			} else if(mydir==3) {
+				bgpos.x=(bgpos.x-1)%128;
+			} else if(mydir==4) {
+				bgpos.y=(bgpos.y+1)%90;
+			}
+			get("board").style.backgroundPositionX=bgpos.x+"px";
+			get("board").style.backgroundPositionY=bgpos.y+"px";
+		}
+		function mykey(ev) {
+			ev.preventDefault();
+			mydir=keys[ev.key];
+			if(mydir>0) {
+				clearInterval(walk_tmr);
+				walk_tmr=setInterval(walk,10);
+				get("avt").style.animationPlayState="running";
+				get("avt").style.backgroundPositionY=((mydir-1)*(-72))+"px";
+			} else {
+				clearInterval(walk_tmr);
+				get("avt").style.animationPlayState="paused";
+			}
+		}
+	</script>
+</head>
+<body onkeydown="mykey(event);">
+	<div id="board">
+		<div id="avt"></div>
+	</div>
+</body>
+</html>

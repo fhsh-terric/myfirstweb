@@ -1,0 +1,159 @@
+<html>
+<head>
+	<meta charset="utf8">
+	<title>CSS-漸層</title>
+	<style>	/*CSS註解*/
+		div { /*選擇器直接設定div是指對所有的DIV容器，統一設定*/
+			width:200px;
+			height:100px;
+			margin-bottom:10px;
+		}
+		#d1 {
+			/*linear-gradient(方向,色1,色2,...);線性漸層
+			方向1：to top/right/bottom/left
+			方向2：0~360deg degree的意思 0是上，90是右
+			漸層不是一個顏色，所以不能用在color的地方。要把他當一張圖片！
+			*/
+			background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+		}
+		#d2 {
+			background: linear-gradient(to right,
+			hsl(0deg,100%,50%), hsl(30deg,100%,50%), hsl(60deg,100%,50%), hsl(90deg,100%,50%), hsl(120deg,100%,50%), hsl(150deg,100%,50%), hsl(180deg,100%,50%), hsl(210deg,100%,50%), hsl(240deg,100%,50%), hsl(270deg,100%,50%), hsl(300deg,100%,50%), hsl(330deg,100%,50%));
+		}
+		#d3 {
+			background: linear-gradient(to bottom, hsl(0deg,0%,50%), hsl(0deg,10%,50%), hsl(0deg,20%,50%), hsl(0deg,30%,50%), hsl(0deg,40%,50%), hsl(0deg,50%,50%), hsl(0deg,60%,50%), hsl(0deg,70%,50%), hsl(0deg,80%,50%), hsl(0deg,90%,50%), hsl(0deg,100%,50%));
+		}
+		#d4 {
+			background: linear-gradient(90deg, red 33%, white 33%, white 67%, blue 67%);
+		}
+		#d5 {
+			background: repeating-linear-gradient(135deg, red 20%, white 25%, red 30%);
+			display:inline-block;
+		}
+		@keyframes kd5 {
+			0%{background: repeating-linear-gradient(135deg, red 20%, white 25%, red 30%);}
+			50%{background: repeating-linear-gradient(135deg, white 20%, red 25%, white 30%);}
+			100%{background: repeating-linear-gradient(135deg, red 20%, white 25%, red 30%);}
+		}
+		#ad5 {
+			animation: kd5 0.5s linear infinite;
+			display:inline-block;
+		}
+		#d6 {
+			background: repeating-linear-gradient(135deg, red 20%, white 25%, green 30%, white 35%, red 40%);
+		}
+		
+		@keyframes kd7 {
+			0%{background:linear-gradient(90deg,blue,red 30%,blue);}
+			25%{background:linear-gradient(90deg,blue,red 50%,blue);}
+			50%{background:linear-gradient(90deg,blue,red 70%,blue);}
+			75%{background:linear-gradient(90deg,blue,red 50%,blue);}
+			100%{background:linear-gradient(90deg,blue,red 30%,blue);}
+		}
+		#ad7 {
+			animation:kd7 0.5s linear infinite;
+			display:inline-block;
+		}
+		@keyframes kd8 {
+			0%{background:linear-gradient(0deg,red,blue);}
+			13%{background:linear-gradient(45deg,red,blue);}
+			25%{background:linear-gradient(90deg,red,blue);}
+			37%{background:linear-gradient(135deg,red,blue);}
+			50%{background:linear-gradient(180deg,red,blue);}
+			67%{background:linear-gradient(225deg,red,blue);}
+			75%{background:linear-gradient(270deg,red,blue);}
+			87%{background:linear-gradient(315deg,red,blue);}
+			100%{background:linear-gradient(360deg,red,blue);}
+		}
+		#ad8 {
+			animation:kd8 0.5s linear infinite;
+			display:inline-block;
+		}
+		@keyframes kd9 {
+			0%{background:hsl(0deg,100%,50%);}
+			8%{background:hsl(30deg,100%,50%);}
+			16%{background:hsl(60deg,100%,50%);}
+			25%{background:hsl(90deg,100%,50%);}
+			33%{background:hsl(120deg,100%,50%);}
+			42%{background:hsl(150deg,100%,50%);}
+			50%{background:hsl(180deg,100%,50%);}
+			58%{background:hsl(210deg,100%,50%);}
+			67%{background:hsl(240deg,100%,50%);}
+			75%{background:hsl(270deg,100%,50%);}
+			83%{background:hsl(300deg,100%,50%);}
+			92%{background:hsl(330deg,100%,50%);}
+			100%{background:hsl(360deg,100%,50%);}
+		}
+		#ad9 {
+			animation:kd9 20s linear infinite;
+			display:inline-block;
+		}
+		
+		/* radial-gradient(); 輻射漸層，意思是由圓心向圓周漸層 */
+		#r1 {
+			background: radial-gradient(circle,yellow,white,black);
+		}
+		#r2 {
+			background: radial-gradient(circle,yellow,white 30%,black);
+			display:inline-block;
+		}
+		@keyframes kr2{
+			0%{background: radial-gradient(circle,yellow,white 30%,black);}
+			16%{background: radial-gradient(circle,yellow,white 50%,black);}
+			33%{background: radial-gradient(circle,yellow,white 70%,black);}
+			50%{background: radial-gradient(circle,yellow,white 90%,black);}
+			66%{background: radial-gradient(circle,yellow,white 70%,black);}
+			83%{background: radial-gradient(circle,yellow,white 50%,black);}
+			100%{background: radial-gradient(circle,yellow,white 30%,black);}
+		}
+		#ar2 {
+			animation: kr2 0.5s linear infinite;
+			display:inline-block;
+		}
+		#r3 {
+			background: repeating-radial-gradient(circle,gray 25%,white 35%,gray 45%);
+		}
+
+		/* conic-gradient(); 圓錐漸層，意思是繞著圓心，漸層一圈 */
+		#c1 {
+			background: conic-gradient(red,green,blue,red);
+		}
+		#c2 {
+			background: repeating-conic-gradient(red 10%,white 15%,red 20%);
+			display:inline-block;
+		}
+		
+		@keyframes kc2 {
+			0% {background: repeating-conic-gradient(red 10%,white 15%,red 20%);}
+			50% {background: repeating-conic-gradient(white 10%,red 15%,white 20%);}
+			100% {background: repeating-conic-gradient(red 10%,white 15%,red 20%);}
+		}
+		#ac2 {
+			animation:kc2 0.5s linear infinite;/* 名 一次多久 速度 次數 */
+			display:inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="d1"></div>
+	<div id="d2"></div>
+	<div id="d3"></div>
+	<div id="d4"></div>
+	<div id="d5"></div>
+	<div id="ad5"></div>
+	<div id="d6"></div>
+	<div id="ad7"></div>
+	<div id="ad8"></div>
+	<div id="ad9"></div>
+	
+	<div id="r1"></div>
+	<div id="r2"></div>
+	<div id="ar2"></div>
+	<div id="r3"></div>
+	
+	<div id="c1"></div>
+	<div id="c2"></div>
+	<div id="ac2"></div>
+</body>
+</html>
+

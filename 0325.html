@@ -1,0 +1,49 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>0325-終極密碼</title>
+	<script> // JavaScript 單行註解
+		/* JavaScript
+			多行註解  */
+	function get(x) {//自訂函式
+		return document.getElementById(x);
+	}
+	function getRnd(min,max) {
+		return Math.floor(Math.random()*(max-min+1))+min;
+	}
+	function gameStart() {
+		get("btnStart").style.display="none";
+		min=0; max=100;
+		ans=getRnd(min,max);
+		get("min").innerHTML=min;
+		get("max").innerHTML=max;
+		get("user").min=min;
+		get("user").max=max;
+		get("game").style.display="block";	
+	}
+	function guess() {
+		user=parseInt(get("user").value);
+		if(user > max || user < min) {
+			alert("超過範圍！");
+		} else if(user==ans) {
+			alert("恭喜你爆了！");
+			get("game").style.display="none";
+			get("btnStart").style.display="block";
+		} else if(user < ans) {
+			get("min").innerHTML=user;
+			get("user").min=user;
+		} else if(user > ans) {
+			get("max").innerHTML=user;
+			get("user").max=user;
+		}
+		get("user").value="";
+	}
+	</script>
+</head>
+<body>
+	<button id="btnStart" onclick="gameStart();">遊戲開始</button>
+	<div id="game" style="display:none;">
+		<span id="min"></span> &lt; <input type="number" id="user"> &lt; <span id="max"></span>　　<button onclick="guess();">猜</button>
+	</div>
+</body>
+</html>

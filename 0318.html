@@ -1,0 +1,28 @@
+<html>
+<head>
+	<style>
+		#msg{
+			font-size:48pt;
+			color:blue;
+		}
+	</style>
+	<script> //單行註解
+		/* JavaScript
+				多行註解 */
+	function sayHello() {
+		ans=prompt("請問怎麼稱呼？");
+		if(confirm("你滿十八歲了嗎？")) {
+			alert("果然大家都會按確定");
+		} else {
+			alert("小朋友要早睡早起");
+		}
+		console.log(ans);
+		document.getElementById("msg").innerHTML=ans+"你好，這裡什麼都沒有。";
+	}
+	</script>
+</head>
+<body>
+	<button onclick="sayHello();">哈囉</button>
+	<div id="msg"></div>
+</body>
+</html>
